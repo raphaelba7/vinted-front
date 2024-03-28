@@ -2,11 +2,14 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import axios from "axios";
 import Cookies from "js-cookie";
-import ModalLogin from "../modalLogin";
-import { Link } from "react-router-dom";
 
-const ModalSignUp = ({ visible, setVisible }) => {
-  const [token, setToken] = useState(Cookies.get("userToken"));
+const ModalSignUp = ({
+  visible,
+  setVisible,
+  visibleLogin,
+  setVisibleLogin,
+}) => {
+  const [token, setToken] = useState(Cookies.get("userToken") || "");
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -51,6 +54,11 @@ const ModalSignUp = ({ visible, setVisible }) => {
     setNewsLetter(!newsLetter);
   };
 
+  const handleSwitchModal = () => {
+    setVisible(!visible);
+    setVisibleLogin(!visibleLogin);
+  };
+
   return (
     <div className="modal-root">
       <div className="modal">
@@ -91,7 +99,7 @@ const ModalSignUp = ({ visible, setVisible }) => {
             S'inscrire
           </button>
         </form>
-        <Link>Tu as déjà un compte ? connecte-toi</Link>
+        <p onClick={handleSwitchModal}>Tu as déjà un compte ? connecte-toi</p>
       </div>
     </div>
   );

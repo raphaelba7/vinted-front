@@ -2,11 +2,16 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import axios from "axios";
 import Cookies from "js-cookie";
-import { Link } from "react-router-dom";
-import ModalSignUp from "../modalSignUp";
 
-const ModalLogin = ({ visibleLogin, setVisibleLogin }) => {
-  const [token, setToken] = useState(Cookies.get("userToken"));
+const ModalLogin = ({
+  visibleLogin,
+  setVisibleLogin,
+  setVisible,
+  visible,
+  setIsConnected,
+  token,
+  setToken,
+}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -25,6 +30,7 @@ const ModalLogin = ({ visibleLogin, setVisibleLogin }) => {
       Cookies.set("userToken", data.token, { expires: 15 });
       setToken(data.token);
       setVisibleLogin(!visibleLogin);
+      setIsConnected(true);
       navigate("/");
     } catch (error) {
       console.log(error);
@@ -39,8 +45,9 @@ const ModalLogin = ({ visibleLogin, setVisibleLogin }) => {
     setPassword(event.target.value);
   };
 
-  const handleSwitchModal = (event) => {
-    setVisibleLogin(false);
+  const handleSwitchModal = () => {
+    setVisible(!visible);
+    setVisibleLogin(!visibleLogin);
   };
 
   return (
@@ -65,7 +72,7 @@ const ModalLogin = ({ visibleLogin, setVisibleLogin }) => {
             Se connecter
           </button>
         </form>
-        <Link>Pas encore de compte ? inscris-toi</Link>
+        <p onClick={handleSwitchModal}>Pas encore de compte ? inscris-toi</p>
       </div>
     </div>
   );

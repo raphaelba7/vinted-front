@@ -1,6 +1,7 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from "react";
+import Cookies from "js-cookie";
 
 // Import Pages
 import Home from "./pages/Home";
@@ -15,6 +16,8 @@ import ModalLogin from "./components/modalLogin";
 function App() {
   const [visible, setVisible] = useState(false);
   const [visibleLogin, setVisibleLogin] = useState(false);
+  const [isConnected, setIsConnected] = useState(false);
+  const [token, setToken] = useState(Cookies.get("userToken") || "");
   return (
     <div style={{ postion: "relative" }}>
       <Router>
@@ -23,6 +26,10 @@ function App() {
           setVisible={setVisible}
           visibleLogin={visibleLogin}
           setVisibleLogin={setVisibleLogin}
+          isConnected={isConnected}
+          setIsConnected={setIsConnected}
+          token={token}
+          setToken={setToken}
         />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -34,6 +41,10 @@ function App() {
             visible={visible}
             setVisible={setVisible}
             setVisibleLogin={setVisibleLogin}
+            visibleLogin={visibleLogin}
+            setIsConnected={setIsConnected}
+            token={token}
+            setToken={setToken}
           />
         )}
         {visibleLogin && (
@@ -41,6 +52,10 @@ function App() {
             visibleLogin={visibleLogin}
             setVisibleLogin={setVisibleLogin}
             setVisible={setVisible}
+            visible={visible}
+            setIsConnected={setIsConnected}
+            token={token}
+            setToken={setToken}
           />
         )}
       </Router>

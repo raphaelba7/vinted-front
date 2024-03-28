@@ -161,3 +161,7 @@ div.carrousel-image > img {
   width: 700px;
   height: 400px;
 }
+
+.display-none {
+  display: none;
+}
