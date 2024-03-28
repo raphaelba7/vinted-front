@@ -8,8 +8,9 @@ const Header = ({
   visible,
   setVisibleLogin,
   visibleLogin,
-  isConnected,
-  setIsConnected,
+  // isConnected,
+  // setIsConnected,
+  token,
   setToken,
 }) => {
   const handleSignUp = () => {
@@ -27,6 +28,7 @@ const Header = ({
   const handleCloseModals = () => {
     setVisible(false);
     setVisibleLogin(false);
+    // setIsConnected(isConnected);
   };
   return (
     <>
@@ -53,17 +55,17 @@ const Header = ({
             <Button
               name="S'inscrire"
               onClick={handleSignUp}
-              disabled={isConnected === false ? false : true}
+              disabled={token ? true : false}
             />
             <Button
               name="Se connecter"
               onClick={handleLogin}
-              disabled={isConnected === false ? false : true}
+              disabled={token ? true : false}
             />
             <Button
               name="Se deconnecter"
               onClick={handleLogOut}
-              disabled={isConnected === false ? true : false}
+              disabled={token ? false : true}
             />
           </div>
           <div className="header-button-sell">

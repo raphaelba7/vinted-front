@@ -8,6 +8,8 @@ const ModalSignUp = ({
   setVisible,
   visibleLogin,
   setVisibleLogin,
+  isConnected,
+  setIsConnected,
 }) => {
   const [token, setToken] = useState(Cookies.get("userToken") || "");
   const [email, setEmail] = useState("");
@@ -32,6 +34,7 @@ const ModalSignUp = ({
       Cookies.set("userToken", data.token, { expires: 15 });
       setToken(data.token);
       setVisible(!visible);
+      // setIsConnected(isConnected);
       navigate("/");
     } catch (error) {
       console.log(error);

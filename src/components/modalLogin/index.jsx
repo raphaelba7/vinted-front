@@ -8,6 +8,7 @@ const ModalLogin = ({
   setVisibleLogin,
   setVisible,
   visible,
+  isConnected,
   setIsConnected,
   token,
   setToken,
@@ -30,6 +31,7 @@ const ModalLogin = ({
       Cookies.set("userToken", data.token, { expires: 15 });
       setToken(data.token);
       setVisibleLogin(!visibleLogin);
+      // setIsConnected(isConnected);
       navigate("/");
     } catch (error) {
       console.log(error);
