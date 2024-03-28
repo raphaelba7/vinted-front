@@ -1,6 +1,7 @@
 import Button from "../button";
 import logo from "../../assets/img/logo_vinted.png";
 import Cookies from "js-cookie";
+import { Link } from "react-router-dom";
 
 const Header = ({
   setVisible,
@@ -20,15 +21,20 @@ const Header = ({
     setVisible(false);
   };
   const handleLogOut = () => {
-    setIsConnected(false);
     Cookies.remove("userToken");
     setToken();
+  };
+  const handleCloseModals = () => {
+    setVisible(false);
+    setVisibleLogin(false);
   };
   return (
     <>
       <header>
         <div className="header-container">
-          <img src={logo} alt="" />
+          <Link to="/" onClick={handleCloseModals}>
+            <img src={logo} alt="" />
+          </Link>
           <div className="header-button-left">
             <div className="header-search">
               <input

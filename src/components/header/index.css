@@ -13,7 +13,7 @@ header div.header-container {
   padding: 10px 0;
   margin: auto;
 }
-header div > img {
+header div a > img {
   object-fit: cover;
   height: 40px;
 }

@@ -16,8 +16,8 @@ import ModalLogin from "./components/modalLogin";
 function App() {
   const [visible, setVisible] = useState(false);
   const [visibleLogin, setVisibleLogin] = useState(false);
-  const [isConnected, setIsConnected] = useState(false);
   const [token, setToken] = useState(Cookies.get("userToken") || "");
+  const [isConnected, setIsConnected] = useState(token ? true : false);
   return (
     <div style={{ postion: "relative" }}>
       <Router>
