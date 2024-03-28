@@ -2,7 +2,13 @@ import { Link } from "react-router-dom";
 import Button from "../button";
 import logo from "../../assets/img/logo_vinted.png";
 
-const Header = () => {
+const Header = ({ setVisible, visible, setVisibleLogin, visibleLogin }) => {
+  const handleSignUp = () => {
+    setVisible(!visible);
+  };
+  const handleLogin = () => {
+    setVisibleLogin(!visibleLogin);
+  };
   return (
     <>
       <header>
@@ -23,8 +29,8 @@ const Header = () => {
             </div>
           </div>
           <div className="header-button-login-sign">
-            <Button name="S'inscrire" />
-            <Button name="Se connecter" />
+            <Button name="S'inscrire" onClick={handleSignUp} />
+            <Button name="Se connecter" onClick={handleLogin} />
           </div>
           <div className="header-button-sell">
             <Button name="Vends tes articles" />

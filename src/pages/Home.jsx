@@ -86,11 +86,9 @@ const Home = () => {
           <div className="home-offer-display">
             {data.offers.map((elem, index) => {
               return (
-                <>
-                  <Link to={`/offer/${elem._id}`} key={elem.id}>
-                    <Item data={elem} index={index} key={elem._id} />
-                  </Link>
-                </>
+                <Link to={`/offer/${elem._id}`} key={elem._id}>
+                  <Item data={elem} index={index} />
+                </Link>
               );
             })}
           </div>

@@ -18,18 +18,10 @@ const Item = ({ data }) => {
         <div className="offer-item-price-size-brand">
           <span>{data.product_price} €</span>
           {data.product_details.map((elem) => {
-            return (
-              <>
-                <span key={elem.TAILLE}>{elem.TAILLE}</span>
-              </>
-            );
+            return <span key={Object.keys(elem)}>{elem.TAILLE}</span>;
           })}
           {data.product_details.map((elem) => {
-            return (
-              <>
-                <span key={elem.MARQUE}>{elem.MARQUE}</span>
-              </>
-            );
+            return <span key={Object.keys(elem)}>{elem.MARQUE}</span>;
           })}
         </div>
       </div>

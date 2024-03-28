@@ -137,3 +137,27 @@ div.carrousel-image > img {
 }
 
 /* Card Offer Description */
+
+/* MODAL SIGN UP*/
+.modal-root {
+  position: absolute;
+  background-color: white;
+  top: 100px;
+  /* Pour que la modal prenne tout l'écran : */
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal {
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  width: 700px;
+  height: 400px;
+}
