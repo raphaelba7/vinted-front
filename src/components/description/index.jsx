@@ -1,7 +1,7 @@
 import Button from "../button";
 
-const Descriptif = ({ data }) => {
-  console.log(data);
+const Description = ({ data }) => {
+  //console.log(data);
   return (
     <>
       <div>
@@ -19,10 +19,10 @@ const Descriptif = ({ data }) => {
         <p>{data.product_description}</p>
         <img src={data.owner.account.avatar.secure_url} alt="" />
         <p>{data.owner.account.username}</p>
-        <Button value="Acheter" />
+        <Button name="Acheter" />
       </div>
     </>
   );
 };
 
-export default Descriptif;
+export default Description;

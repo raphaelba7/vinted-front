@@ -1,15 +1,61 @@
+/* GENERAL RULES HEADER */
 header {
-  border-bottom: 1px solid black;
-  height: 100px;
+  height: 120px;
+  display: flex;
+  align-items: center;
 }
 
-header div {
+header div.header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  width: 1200px;
+  padding: 10px 0;
+  margin: auto;
 }
 header div > img {
   object-fit: cover;
   height: 40px;
+}
+
+/* Left Button Header */
+div.header-button-left {
+  width: 630px;
+}
+
+.header-search > input {
+  width: 90%;
+  height: 40px;
+}
+
+/* Right Button Header*/
+
+header div.header-button-login-sign {
+  display: flex;
+  gap: 20px;
+}
+
+div.header-button-login-sign > button {
+  background-color: #fff;
+  border: #2baeb7 1px solid;
+  border-radius: 4px;
+  color: #2baeb7;
+  font-size: 12px;
+  height: 25px;
+  padding: 0 10px;
+  min-width: 110px;
+}
+
+header div.header-button-sell {
+  display: flex;
+}
+
+div.header-button-sell > button {
+  background-color: #2db0ba;
+  border: #2baeb7 1px solid;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 12px;
+  height: 25px;
+  padding: 0 10px;
 }

@@ -6,17 +6,28 @@ const Header = () => {
   return (
     <>
       <header>
-        <div>
+        <div className="header-container">
           <img src={logo} alt="" />
-          <div>
-            <input type="search" name="" id="" />
-            <input type="button" name="" id="" />
-            <input type="range" name="" id="" />
+          <div className="header-button-left">
+            <div className="header-search">
+              <input
+                type="search"
+                placeholder="Recherche des articles"
+                name=""
+                id=""
+              />
+            </div>
+            <div className="header-range">
+              <input type="button" name="" id="" />
+              <input type="range" name="" id="" />
+            </div>
           </div>
-          <div>
-            <Button value="S'inscrire" />
-            <Button value="Se connecter" />
-            <Button value="Vends tes articles" />
+          <div className="header-button-login-sign">
+            <Button name="S'inscrire" />
+            <Button name="Se connecter" />
+          </div>
+          <div className="header-button-sell">
+            <Button name="Vends tes articles" />
           </div>
         </div>
       </header>

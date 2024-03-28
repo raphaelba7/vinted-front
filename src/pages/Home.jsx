@@ -7,22 +7,30 @@ import Button from "../components/button";
 import Item from "../components/item";
 
 const Home = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
+  //const [maxPage, setMaxPage] = useState(1);
   let limit = 10;
+  const maxPage = Math.ceil(data.count / limit);
+  //console.log(maxPage);
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(
-        ` https://lereacteur-vinted-api.herokuapp.com/offers?page=${currentPage}&limit=${limit}`
-      );
-      setData(response.data);
-      setIsLoading(false);
+      try {
+        const response = await axios.get(
+          ` https://lereacteur-vinted-api.herokuapp.com/offers?page=${currentPage}&limit=${limit}`
+        );
+
+        setData(response.data);
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
     };
 
     fetchData();
-  }, [currentPage]);
+  }, [currentPage, limit]);
 
   const handlePreviousPage = () => {
     setCurrentPage(currentPage - 1);
@@ -45,29 +53,47 @@ const Home = () => {
       <>
         <section className="hero-section">
           <div className="hero-div">
-            <img src={hero} alt="image hero" className="img-home-hero" />
+            <img
+              src={hero}
+              alt="2 people looking closes and stuff"
+              className="img-home-hero"
+            />
             <div className="hero-pop">
-              <h2>Prêts à faire du tri dans vos placards</h2>
+              <h2>Prêts à faire du tri dans vos placards ?</h2>
               <Button name="Commencer à vendre" />
             </div>
-            <img src={hero2} alt="" className="img-home-hero2" />
+            <img
+              src={hero2}
+              alt="white background effect"
+              className="img-home-hero2"
+            />
           </div>
         </section>
         <section className="home-offer-section">
-          <div>
-            <Button value="Précédent" onClick={handlePreviousPage} />
+          <div className="page-offer">
+            <Button
+              name="Précédent"
+              onClick={handlePreviousPage}
+              disabled={currentPage === 1}
+            />
             <p>{currentPage}</p>
-            <Button value="Suivant" onClick={handleNextPage} />
+            <Button
+              name="Suivant"
+              onClick={handleNextPage}
+              disabled={currentPage === maxPage}
+            />
           </div>
-          {data.offers.map((elem, index) => {
-            return (
-              <>
-                <Link to={`/offer/${elem._id}`}>
-                  <Item data={elem} index={index} />
-                </Link>
-              </>
-            );
-          })}
+          <div className="home-offer-display">
+            {data.offers.map((elem, index) => {
+              return (
+                <>
+                  <Link to={`/offer/${elem._id}`} key={elem.id}>
+                    <Item data={elem} index={index} key={elem._id} />
+                  </Link>
+                </>
+              );
+            })}
+          </div>
         </section>
       </>
     );
