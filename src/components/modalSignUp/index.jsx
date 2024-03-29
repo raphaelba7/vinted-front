@@ -17,11 +17,14 @@ const ModalSignUp = ({
   const [password, setPassword] = useState("");
   const [newsLetter, setNewsLetter] = useState(false);
 
+  const [errorMessage, setErrorMessage] = useState("");
+
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
+    event.preventDefault();
     try {
-      event.preventDefault();
+      setErrorMessage("");
       const { data } = await axios.post(
         ` https://lereacteur-vinted-api.herokuapp.com/user/signup`,
         {
@@ -31,13 +34,24 @@ const ModalSignUp = ({
           newsLetter: newsLetter,
         }
       );
+      // console.log(data)
       Cookies.set("userToken", data.token, { expires: 15 });
       setToken(data.token);
       setVisible(!visible);
       // setIsConnected(isConnected);
       navigate("/");
     } catch (error) {
-      console.log(error);
+      // afficher le status de l'erreur
+      //console.log(error.response.status);
+      // afficher plus de détails
+      console.log(error.response);
+      if (error.response.status === 409) {
+        setErrorMessage(
+          "This email already has an account, please use another one"
+        );
+      } else if (error.response.data.message === "Missing parameters") {
+        setErrorMessage("Please fill in all the fields");
+      }
     }
   };
 
@@ -101,6 +115,7 @@ const ModalSignUp = ({
           <button type="submit" onClick={handleSubmit}>
             S'inscrire
           </button>
+          {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
         </form>
         <p onClick={handleSwitchModal}>Tu as déjà un compte ? connecte-toi</p>
       </div>
