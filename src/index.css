@@ -165,3 +165,19 @@ div.carrousel-image > img {
 .display-none {
   display: none;
 }
+
+footer {
+  background-color: #f2f2f2;
+}
+
+.container {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.line-gray-footer {
+  background-color: #e1e1e1;
+  height: 1px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

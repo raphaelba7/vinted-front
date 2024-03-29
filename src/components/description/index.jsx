@@ -17,7 +17,12 @@ const Description = ({ data }) => {
         })}
         <p>{data.product_name}</p>
         <p>{data.product_description}</p>
-        <img src={data.owner.account.avatar.secure_url} alt="" />
+        {data.owner.account.avatar && (
+          <img
+            src={data.owner.account.avatar.secure_url}
+            alt={data.owner.account.username}
+          />
+        )}
         <p>{data.owner.account.username}</p>
         <Button name="Acheter" />
       </div>

@@ -1,5 +1,6 @@
 import Button from "../button";
 import logo from "../../assets/img/logo_vinted.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Cookies from "js-cookie";
 import { Link } from "react-router-dom";
 
@@ -39,6 +40,7 @@ const Header = ({
           </Link>
           <div className="header-button-left">
             <div className="header-search">
+              <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />
               <input
                 type="search"
                 placeholder="Recherche des articles"
@@ -47,7 +49,10 @@ const Header = ({
               />
             </div>
             <div className="header-range">
-              <input type="button" name="" id="" />
+              <label className="switch">
+                <input type="checkbox" />
+                <span className="slider round" value="⇣"></span>
+              </label>
               <input type="range" name="" id="" />
             </div>
           </div>

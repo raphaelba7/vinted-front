@@ -8,9 +8,9 @@ const ModalLogin = ({
   setVisibleLogin,
   setVisible,
   visible,
-  isConnected,
-  setIsConnected,
-  token,
+  // isConnected,
+  // setIsConnected,
+  // token,
   setToken,
 }) => {
   const [email, setEmail] = useState("");

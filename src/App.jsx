@@ -1,4 +1,7 @@
 import "./App.css";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import Cookies from "js-cookie";
@@ -12,6 +15,9 @@ import NotFound from "./pages/NotFound";
 import Header from "./components/header";
 import ModalSignUp from "./components/modalSignUp";
 import ModalLogin from "./components/modalLogin";
+import Footer from "./components/footer";
+
+library.add(faMagnifyingGlass);
 
 function App() {
   const [visible, setVisible] = useState(false);
@@ -58,6 +64,7 @@ function App() {
             setToken={setToken}
           />
         )}
+        <Footer />
       </Router>
     </div>
   );

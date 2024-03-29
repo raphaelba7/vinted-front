@@ -70,6 +70,15 @@ const Home = () => {
           </div>
         </section>
         <section className="home-offer-section">
+          <div className="home-offer-display">
+            {data.offers.map((elem, index) => {
+              return (
+                <Link to={`/offer/${elem._id}`} key={elem._id}>
+                  <Item data={elem} index={index} />
+                </Link>
+              );
+            })}
+          </div>
           <div className="page-offer">
             <Button
               name="Précédent"
@@ -82,15 +91,6 @@ const Home = () => {
               onClick={handleNextPage}
               disabled={currentPage === maxPage}
             />
-          </div>
-          <div className="home-offer-display">
-            {data.offers.map((elem, index) => {
-              return (
-                <Link to={`/offer/${elem._id}`} key={elem._id}>
-                  <Item data={elem} index={index} />
-                </Link>
-              );
-            })}
           </div>
         </section>
       </>

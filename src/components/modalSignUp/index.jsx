@@ -8,8 +8,8 @@ const ModalSignUp = ({
   setVisible,
   visibleLogin,
   setVisibleLogin,
-  isConnected,
-  setIsConnected,
+  // isConnected,
+  // setIsConnected,
 }) => {
   const [token, setToken] = useState(Cookies.get("userToken") || "");
   const [email, setEmail] = useState("");
