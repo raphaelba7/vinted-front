@@ -21,8 +21,11 @@ library.add(faMagnifyingGlass);
 function App() {
   const [visible, setVisible] = useState(false);
   const [token, setToken] = useState(Cookies.get("userToken") || "");
-
   const [modal, setModal] = useState("");
+  const [sort, setSort] = useState(false);
+  const [search, setSearch] = useState("");
+  const [min, setMin] = useState("");
+  const [max, setMax] = useState("");
 
   return (
     <div style={{ position: "relative" }}>
@@ -34,9 +37,20 @@ function App() {
           setModal={setModal}
           token={token}
           setToken={setToken}
+          sort={sort}
+          setSort={setSort}
+          search={search}
+          setSearch={setSearch}
+          min={min}
+          setMin={setMin}
+          max={max}
+          setMax={setMax}
         />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route
+            path="/"
+            element={<Home sort={sort} search={search} min={min} max={max} />}
+          />
           <Route path="/offer/:id" element={<Offer />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

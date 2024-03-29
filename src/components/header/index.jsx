@@ -9,9 +9,16 @@ const Header = ({
   visible,
   modal,
   setModal,
-
+  sort,
+  setSort,
+  search,
+  setSearch,
   token,
   setToken,
+  min,
+  max,
+  setMin,
+  setMax,
 }) => {
   const handleSignUp = () => {
     setVisible(true);
@@ -25,13 +32,36 @@ const Header = ({
     Cookies.remove("userToken");
     setToken();
   };
-  const handleCloseModals = () => {
+  const handleLogo = () => {
     setVisible(false);
+    setSearch("");
+    setMin("");
+    setMax("");
   };
+
+  const handleSort = () => {
+    setSort(!sort);
+  };
+
+  const handleSearchChange = (event) => {
+    const value = event.target.value;
+    setSearch(value);
+  };
+
+  const handleMinChange = (event) => {
+    const value = Number(event.target.value);
+    setMin(value);
+  };
+
+  const handleMaxChange = (event) => {
+    const value = Number(event.target.value);
+    setMax(value);
+  };
+
   return (
     <header>
       <div className="header-container">
-        <Link to="/" onClick={handleCloseModals}>
+        <Link to="/" onClick={handleLogo}>
           <img src={logo} alt="" />
         </Link>
         <div className="header-button-left">
@@ -42,14 +72,17 @@ const Header = ({
               placeholder="Recherche des articles"
               name=""
               id=""
+              onChange={handleSearchChange}
             />
           </div>
           <div className="header-range">
             <label className="switch">
-              <input type="checkbox" />
+              <input type="checkbox" onClick={handleSort} />
               <span className="slider round" value="⇣"></span>
             </label>
             <input type="range" name="" id="" />
+            <input type="text" value={min} onChange={handleMinChange} />
+            <input type="text" value={max} onChange={handleMaxChange} />
           </div>
         </div>
         <div className="header-button-login-sign">

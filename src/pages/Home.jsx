@@ -6,7 +6,7 @@ import hero2 from "../assets/img/hero2_vinted.svg";
 import Button from "../components/button";
 import Item from "../components/item";
 
-const Home = () => {
+const Home = ({ sort, search, min, max }) => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
@@ -14,12 +14,18 @@ const Home = () => {
   let limit = 10;
   const maxPage = Math.ceil(data.count / limit);
   //console.log(maxPage);
+  let order = "";
+  if (sort === true) {
+    order = "price-desc";
+  } else {
+    order = "price-asc";
+  }
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          ` https://lereacteur-vinted-api.herokuapp.com/offers?page=${currentPage}&limit=${limit}`
+          ` https://lereacteur-vinted-api.herokuapp.com/offers?page=${currentPage}&limit=${limit}&sort=${order}&title=${search}&priceMin=${min}&priceMax=${max}`
         );
 
         setData(response.data);
@@ -30,7 +36,7 @@ const Home = () => {
     };
 
     fetchData();
-  }, [currentPage, limit]);
+  }, [currentPage, limit, order, search, min, max]);
 
   const handlePreviousPage = () => {
     setCurrentPage(currentPage - 1);

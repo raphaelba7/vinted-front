@@ -1,12 +1,16 @@
 const Item = ({ data }) => {
+  console.log(data);
   return (
     <article className="offer-item">
       <div className="owner-item">
-        <img
-          src={data.owner.account.avatar.secure_url}
-          alt={data.owner.account.avatar.secure_url}
-          className="owner-avatar"
-        />
+        {data.owner.account.avatar?.secure_url && (
+          <img
+            src={data.owner.account.avatar.secure_url}
+            alt={data.owner.account.avatar.secure_url}
+            className="owner-avatar"
+          />
+        )}
+
         <span>{data.owner.account.username}</span>
       </div>
       <div>
