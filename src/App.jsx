@@ -13,27 +13,25 @@ import NotFound from "./pages/NotFound";
 
 // Import components
 import Header from "./components/header";
-import ModalSignUp from "./components/modalSignUp";
-import ModalLogin from "./components/modalLogin";
 import Footer from "./components/footer";
+import Modal from "./components/modal";
 
 library.add(faMagnifyingGlass);
 
 function App() {
   const [visible, setVisible] = useState(false);
-  const [visibleLogin, setVisibleLogin] = useState(false);
   const [token, setToken] = useState(Cookies.get("userToken") || "");
-  // const [isConnected, setIsConnected] = useState(token ? true : false);
+
+  const [modal, setModal] = useState("");
+
   return (
-    <div style={{ postion: "relative" }}>
+    <div style={{ position: "relative" }}>
       <Router>
         <Header
           visible={visible}
           setVisible={setVisible}
-          visibleLogin={visibleLogin}
-          setVisibleLogin={setVisibleLogin}
-          // isConnected={isConnected}
-          // setIsConnected={setIsConnected}
+          modal={modal}
+          setModal={setModal}
           token={token}
           setToken={setToken}
         />
@@ -43,23 +41,11 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
         {visible && (
-          <ModalSignUp
+          <Modal
             visible={visible}
             setVisible={setVisible}
-            setVisibleLogin={setVisibleLogin}
-            visibleLogin={visibleLogin}
-            // setIsConnected={setIsConnected}
-            token={token}
-            setToken={setToken}
-          />
-        )}
-        {visibleLogin && (
-          <ModalLogin
-            visibleLogin={visibleLogin}
-            setVisibleLogin={setVisibleLogin}
-            setVisible={setVisible}
-            visible={visible}
-            // setIsConnected={setIsConnected}
+            modal={modal}
+            setModal={setModal}
             token={token}
             setToken={setToken}
           />
