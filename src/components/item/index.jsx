@@ -1,5 +1,7 @@
+import "./index.css";
+
 const Item = ({ data }) => {
-  console.log(data);
+  //console.log(data);
   return (
     <article className="offer-item">
       <div className="owner-item">
@@ -20,7 +22,7 @@ const Item = ({ data }) => {
           className="item-img"
         />
         <div className="offer-item-price-size-brand">
-          <span>{data.product_price} €</span>
+          <span className="product-price">{data.product_price} €</span>
           {data.product_details.map((elem) => {
             return <span key={Object.keys(elem)}>{elem.TAILLE}</span>;
           })}

@@ -3,13 +3,14 @@ import googleBadge from "../../assets/img/google-play.svg";
 import fbBadge from "../../assets/img/fb-social-media.svg";
 import instaBadge from "../../assets/img/insta-social-media.svg";
 import linkedBadge from "../../assets/img/linked-social-media.svg";
+import "./index.css";
 
 const Footer = () => {
   return (
     <>
       <footer>
         <div
-          className="container"
+          className="container first-row-footer"
           style={{ display: "flex", justifyContent: "space-between" }}
         >
           <div>
@@ -44,13 +45,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="line-gray-footer container"></div>
-        <div
-          className="footer-social-media container"
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-          }}
-        >
+        <div className="footer-social-media container">
           <ul
             style={{
               display: "flex",
@@ -81,8 +76,8 @@ const Footer = () => {
           </ul>
         </div>
         <div className="line-gray-footer container"></div>
-        <div className="container">
-          <ul style={{ display: "flex", justifyContent: "space-between" }}>
+        <div className="footer-last-row container">
+          <ul>
             <li>Politique de Confidentialité</li>
             <li>Politique de cookies</li>
             <li>Paramètres des cookies</li>

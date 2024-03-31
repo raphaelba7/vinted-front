@@ -7,9 +7,9 @@ import { useState } from "react";
 import Cookies from "js-cookie";
 
 // Import Pages
-import Home from "./pages/Home";
-import Offer from "./pages/Offer";
-import NotFound from "./pages/NotFound";
+import Home from "./pages/home/Home";
+import Offer from "./pages/offer/Offer";
+import NotFound from "./pages/notFound/NotFound";
 
 // Import components
 import Header from "./components/header";
@@ -27,46 +27,53 @@ function App() {
   const [min, setMin] = useState("");
   const [max, setMax] = useState("");
 
+  /* function to stop scrolling when modal are visible */
+  if (visible === true) {
+    window.onscroll = function () {
+      window.scrollTo(0, 0);
+    };
+  } else {
+    window.onscroll = function () {};
+  }
+
   return (
-    <div style={{ position: "relative" }}>
-      <Router>
-        <Header
+    <Router>
+      <Header
+        visible={visible}
+        setVisible={setVisible}
+        modal={modal}
+        setModal={setModal}
+        token={token}
+        setToken={setToken}
+        sort={sort}
+        setSort={setSort}
+        search={search}
+        setSearch={setSearch}
+        min={min}
+        setMin={setMin}
+        max={max}
+        setMax={setMax}
+      />
+      <Routes>
+        <Route
+          path="/"
+          element={<Home sort={sort} search={search} min={min} max={max} />}
+        />
+        <Route path="/offer/:id" element={<Offer />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      {visible && (
+        <Modal
           visible={visible}
           setVisible={setVisible}
           modal={modal}
           setModal={setModal}
           token={token}
           setToken={setToken}
-          sort={sort}
-          setSort={setSort}
-          search={search}
-          setSearch={setSearch}
-          min={min}
-          setMin={setMin}
-          max={max}
-          setMax={setMax}
         />
-        <Routes>
-          <Route
-            path="/"
-            element={<Home sort={sort} search={search} min={min} max={max} />}
-          />
-          <Route path="/offer/:id" element={<Offer />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-        {visible && (
-          <Modal
-            visible={visible}
-            setVisible={setVisible}
-            modal={modal}
-            setModal={setModal}
-            token={token}
-            setToken={setToken}
-          />
-        )}
-        <Footer />
-      </Router>
-    </div>
+      )}
+      <Footer />
+    </Router>
   );
 }
 

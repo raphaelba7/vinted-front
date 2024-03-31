@@ -18,6 +18,12 @@ header div a > img {
   height: 40px;
 }
 
+/* Filter header */
+.header-button-left {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
 /* Left Button Header */
 div.header-button-left {
   width: 630px;
@@ -26,6 +32,44 @@ div.header-button-left {
 .header-search > input {
   width: 80%;
   height: 40px;
+}
+.header-range {
+  margin-top: 25px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.min-filter,
+.max-filter {
+  width: 50px;
+}
+/* Search input */
+input.search-input {
+  border: none;
+}
+
+div.header-search,
+input.search-input {
+  background-color: #f5f6f7;
+  position: relative;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 580px;
+  height: 37px;
+}
+
+input.search-input {
+  padding-left: 40px;
+}
+
+.icon-glass {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  height: 20px;
+  color: #bbb;
+  z-index: 10;
 }
 
 /* The switch - the box around the slider */
@@ -51,7 +95,7 @@ div.header-button-left {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: #2db0ba;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
@@ -121,4 +165,10 @@ div.header-button-sell > button {
   font-size: 12px;
   height: 25px;
   padding: 0 10px;
+}
+
+div.header-button-login-sign > button.logout {
+  background-color: red;
+  border: none;
+  color: white;
 }

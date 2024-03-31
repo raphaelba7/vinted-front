@@ -1,0 +1,23 @@
+.modal-root {
+  position: absolute;
+  background-color: white;
+  top: 100px;
+  /* Pour que la modal prenne tout l'écran : */
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  position: absolute;
+  top: 50px;
+}

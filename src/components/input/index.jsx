@@ -1,4 +1,4 @@
-const Input = ({ type, placeholder, name, state, setState }) => {
+const Input = ({ type, placeholder, name, state, setState, className }) => {
   // const handleChange = (event) => {
   //   setState(event.target.value);
   // };
@@ -7,6 +7,7 @@ const Input = ({ type, placeholder, name, state, setState }) => {
       value={state}
       type={type}
       name={name}
+      className={className}
       placeholder={placeholder}
       onChange={(event) => {
         setState(event.target.value);

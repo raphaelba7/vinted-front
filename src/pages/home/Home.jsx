@@ -1,19 +1,20 @@
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import hero from "../assets/img/hero_vinted.jpg";
-import hero2 from "../assets/img/hero2_vinted.svg";
-import Button from "../components/button";
-import Item from "../components/item";
+import hero from "../../assets/img/hero_vinted.jpg";
+import hero2 from "../../assets/img/hero2_vinted.svg";
+import Button from "../../components/button";
+import Item from "../../components/item";
+import "./index.css";
 
 const Home = ({ sort, search, min, max }) => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  //const [maxPage, setMaxPage] = useState(1);
   let limit = 10;
   const maxPage = Math.ceil(data.count / limit);
   //console.log(maxPage);
+
   let order = "";
   if (sort === true) {
     order = "price-desc";
@@ -40,12 +41,12 @@ const Home = ({ sort, search, min, max }) => {
 
   const handlePreviousPage = () => {
     setCurrentPage(currentPage - 1);
-    console.log(currentPage);
+    //console.log(currentPage);
   };
 
   const handleNextPage = () => {
     setCurrentPage(currentPage + 1);
-    console.log(currentPage);
+    //console.log(currentPage);
   };
 
   if (isLoading === true) {

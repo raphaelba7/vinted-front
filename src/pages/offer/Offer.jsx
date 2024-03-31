@@ -1,26 +1,24 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import Description from "../components/description";
+import Description from "../../components/description";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import "./index.css";
 
 // Responsive for carrousel
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
-    items: 3,
-    slidesToSlide: 3, // optional, default to 1.
+    items: 1,
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
-    items: 2,
-    slidesToSlide: 2, // optional, default to 1.
+    items: 1,
   },
   mobile: {
     breakpoint: { max: 464, min: 0 },
     items: 1,
-    slidesToSlide: 1, // optional, default to 1.
   },
 };
 
@@ -58,27 +56,24 @@ const Offer = () => {
           <div className="card-offer">
             <div className="card-carrousel">
               <Carousel
-                swipeable={false}
-                draggable={false}
-                showDots={false}
                 responsive={responsive}
                 containerClass="carousel-container"
-                itemClass="carousel-item-padding-40-px"
+                itemClass="carousel-item"
               >
                 {data.product_pictures.map((elem) => {
                   return (
-                    <>
-                      <div key={elem.secure_url} className="carrousel-image">
-                        <img src={elem.secure_url} alt="" />
-                      </div>
-                    </>
+                    <div key={elem.secure_url} className="carrousel-image">
+                      <img
+                        src={elem.secure_url}
+                        alt=""
+                        className="offer-image"
+                      />
+                    </div>
                   );
                 })}
               </Carousel>
             </div>
-            <div>
-              <Description data={data} />
-            </div>
+            <Description data={data} />
           </div>
         </article>
       </>

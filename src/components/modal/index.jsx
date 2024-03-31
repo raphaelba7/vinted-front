@@ -1,4 +1,5 @@
 import Form from "../form";
+import "./index.css";
 
 const Modal = ({ visible, setVisible, modal, setModal, token, setToken }) => {
   return (

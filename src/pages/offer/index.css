@@ -1,0 +1,38 @@
+/* Card Offer */
+article.card-background {
+  background-color: #eaedee;
+  width: 100%;
+  margin: 0 auto;
+}
+.card-offer {
+  width: 1280px;
+  margin: 0 auto;
+  padding: 30px;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  justify-content: space-around;
+}
+/* Card Offer Carrousel*/
+
+div.card-carrousel {
+  max-width: 450px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.carousel-container {
+  width: 450px;
+}
+
+div.carrousel-image {
+  height: 600px;
+  object-fit: cover;
+}
+img.offer-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  height: 600px;
+}

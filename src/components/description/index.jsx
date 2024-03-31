@@ -1,30 +1,36 @@
 import Button from "../button";
+import "./index.css";
 
 const Description = ({ data }) => {
   //console.log(data);
   return (
     <>
-      <div>
-        <p>{data.product_price} €</p>
-        {data.product_details.map((detail) => {
+      <div className="card-description">
+        <span className="product-price">{data.product_price} €</span>
+        {data.product_details.map((detail, index) => {
           return (
-            <>
-              <p>
-                {Object.keys(detail)} : {Object.values(detail)}
-              </p>
-            </>
+            <ul key={Object.keys(detail)} className="product-description-list">
+              <li>
+                <span>{Object.keys(detail)}</span>
+                <span>{Object.values(detail)}</span>
+              </li>
+            </ul>
           );
         })}
-        <p>{data.product_name}</p>
-        <p>{data.product_description}</p>
-        {data.owner.account.avatar && (
-          <img
-            src={data.owner.account.avatar.secure_url}
-            alt={data.owner.account.username}
-          />
-        )}
-        <p>{data.owner.account.username}</p>
-        <Button name="Acheter" />
+        <div className="line-gray"></div>
+        <p className="product-name">{data.product_name}</p>
+        <p className="product-desc">{data.product_description}</p>
+        <div className="user-avatar-name">
+          {data.owner.account.avatar && (
+            <img
+              className="offer-avatar-user"
+              src={data.owner.account.avatar.secure_url}
+              alt={data.owner.account.username}
+            />
+          )}
+          <span>{data.owner.account.username}</span>
+        </div>
+        <Button name="Acheter" className="button-buy" />
       </div>
     </>
   );
