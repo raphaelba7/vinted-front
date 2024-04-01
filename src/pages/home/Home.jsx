@@ -7,10 +7,9 @@ import Button from "../../components/button";
 import Item from "../../components/item";
 import "./index.css";
 
-const Home = ({ sort, search, min, max }) => {
+const Home = ({ sort, search, min, max, currentPage, setCurrentPage }) => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  const [currentPage, setCurrentPage] = useState(1);
   let limit = 10;
   const maxPage = Math.ceil(data.count / limit);
   //console.log(maxPage);

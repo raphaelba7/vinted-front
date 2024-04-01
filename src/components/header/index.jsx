@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Cookies from "js-cookie";
 import { Link } from "react-router-dom";
 import "./index.css";
+import SuperRange from "../range";
 
 const Header = ({
   visible,
@@ -18,6 +19,9 @@ const Header = ({
   max,
   setMin,
   setMax,
+  setCurrentPage,
+  header,
+  setHeader,
 }) => {
   const handleSignUp = () => {
     setVisible(true);
@@ -37,6 +41,8 @@ const Header = ({
     setSearch("");
     setMin("");
     setMax("");
+    setCurrentPage(1);
+    setHeader(true);
   };
 
   const handleSort = () => {
@@ -57,6 +63,12 @@ const Header = ({
     const value = Number(event.target.value);
     setMax(value);
   };
+
+  let classHeader = "";
+
+  if (header === false) {
+    classHeader = "display-none";
+  }
 
   return (
     <header>
@@ -80,13 +92,15 @@ const Header = ({
             />
           </div>
           {!visible && (
-            <div className="header-range">
+            <div className={`header-range ${classHeader}`}>
               <span>Trier par prix:</span>
               <label className="switch">
                 <input type="checkbox" onClick={handleSort} />
-                <span className="slider round" value="⇣"></span>
+                <div className="slider round" value="⇣"></div>
               </label>
-              <span> Prix mini :</span>
+              <span>Prix entre :</span>
+              <SuperRange min={min} setMin={setMin} max={max} setMax={setMax} />
+              {/* <span> Prix mini :</span>
               <input
                 type="text"
                 value={min}
@@ -99,7 +113,7 @@ const Header = ({
                 value={max}
                 onChange={handleMaxChange}
                 className="max-filter"
-              />
+              /> */}
             </div>
           )}
         </div>

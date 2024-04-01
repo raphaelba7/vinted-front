@@ -22,7 +22,7 @@ const responsive = {
   },
 };
 
-const Offer = () => {
+const Offer = ({ header, setHeader }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState([]);
   const { id } = useParams();
@@ -35,6 +35,7 @@ const Offer = () => {
         );
         setData(response.data);
         setIsLoading(false);
+        setHeader(false);
       } catch (error) {
         console.log(error);
       }

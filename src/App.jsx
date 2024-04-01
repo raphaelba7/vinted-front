@@ -26,6 +26,8 @@ function App() {
   const [search, setSearch] = useState("");
   const [min, setMin] = useState("");
   const [max, setMax] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [header, setHeader] = useState(true);
 
   /* function to stop scrolling when modal are visible */
   if (visible === true) {
@@ -53,13 +55,29 @@ function App() {
         setMin={setMin}
         max={max}
         setMax={setMax}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        header={header}
+        setHeader={setHeader}
       />
       <Routes>
         <Route
           path="/"
-          element={<Home sort={sort} search={search} min={min} max={max} />}
+          element={
+            <Home
+              sort={sort}
+              search={search}
+              min={min}
+              max={max}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+            />
+          }
         />
-        <Route path="/offer/:id" element={<Offer />} />
+        <Route
+          path="/offer/:id"
+          element={<Offer header={header} setHeader={setHeader} />}
+        />
         <Route path="*" element={<NotFound />} />
       </Routes>
       {visible && (
