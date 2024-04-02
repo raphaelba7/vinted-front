@@ -64,9 +64,11 @@ const Home = ({ sort, search, min, max, currentPage, setCurrentPage }) => {
               alt="2 people looking closes and stuff"
               className="img-home-hero"
             />
-            <div className="hero-pop">
-              <h2>Prêts à faire du tri dans vos placards ?</h2>
-              <Button name="Commencer à vendre" />
+            <div className="container">
+              <div className="hero-pop">
+                <h2>Prêts à faire du tri dans vos placards ?</h2>
+                <Button name="Commencer à vendre" />
+              </div>
             </div>
             <img
               src={hero2}

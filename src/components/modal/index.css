@@ -21,3 +21,11 @@
   position: absolute;
   top: 50px;
 }
+
+/* ----------------- RESPONSIVE ---------------- */
+@media (max-width: 1024px) {
+}
+@media (max-width: 768px) {
+}
+@media (max-width: 425px) {
+}

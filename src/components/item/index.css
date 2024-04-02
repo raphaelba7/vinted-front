@@ -1,6 +1,8 @@
 .offer-item {
   width: 235px;
   padding: 0 5px 15px;
+  color: #999;
+  height: 100%;
 }
 .owner-item {
   display: flex;
@@ -9,10 +11,7 @@
   padding: 10px;
   font-size: 12px;
   width: 120px;
-}
-
-.offer-item {
-  color: #999;
+  height: 50px;
 }
 
 span.product-price {
@@ -39,4 +38,12 @@ img.item-img {
   flex-direction: column;
   padding: 10px;
   font-size: 12px;
+}
+
+/* ----------------- RESPONSIVE ---------------- */
+@media (max-width: 1024px) {
+}
+@media (max-width: 768px) {
+}
+@media (max-width: 425px) {
 }

@@ -3,15 +3,18 @@ header {
   height: 120px;
   display: flex;
   align-items: center;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
 }
 
 header div.header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 1200px;
+  width: 100%;
+  max-width: 1280px;
   padding: 10px 0;
-  margin: auto;
 }
 header div a > img {
   object-fit: cover;
@@ -35,7 +38,7 @@ div.header-button-left {
 }
 .header-range {
   margin-top: 25px;
-  font-size: 12px;
+  font-size: 0.75rem;
   display: flex;
   align-items: center;
   gap: 15px;
@@ -54,7 +57,7 @@ input.search-input {
   background-color: #f5f6f7;
   position: relative;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 1rem;
   width: 580px;
   height: 37px;
 }
@@ -107,7 +110,7 @@ input.search-input {
   content: "⇣";
   justify-content: center;
   align-items: center;
-  font-size: 16px;
+  font-size: 1rem;
   height: 26px;
   width: 26px;
   left: 4px;
@@ -153,7 +156,7 @@ div.header-button-login-sign > button {
   border: #2baeb7 1px solid;
   border-radius: 4px;
   color: #2baeb7;
-  font-size: 12px;
+  font-size: 0.75rem;
   height: 25px;
   padding: 0 10px;
   min-width: 110px;
@@ -168,7 +171,7 @@ div.header-button-sell > button {
   border: #2baeb7 1px solid;
   border-radius: 4px;
   color: #fff;
-  font-size: 12px;
+  font-size: 0.75rem;
   height: 25px;
   padding: 0 10px;
 }
@@ -177,4 +180,55 @@ div.header-button-login-sign > button.logout {
   background-color: red;
   border: none;
   color: white;
+}
+
+.button-sell {
+  background-color: #2db0ba;
+  border: #2baeb7 1px solid;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 0.75rem;
+  height: 25px;
+  padding: 0 10px;
+}
+
+/* ----------------- RESPONSIVE ---------------- */
+@media (max-width: 1024px) {
+  div.header-button-left {
+    width: 430px;
+  }
+  div.header-search,
+  input.search-input {
+    width: 450px;
+    height: 37px;
+  }
+  .header-range > span {
+    width: 120px;
+  }
+}
+@media (max-width: 768px) {
+  header div.header-container {
+    justify-content: flex-start;
+    gap: 30px;
+    margin-left: 50px;
+  }
+  div.header-button-left {
+    width: 350px;
+  }
+  div.header-search,
+  input.search-input {
+    margin-left: 20px;
+    width: 275px;
+    height: 37px;
+  }
+  .header-range {
+    display: none;
+  }
+
+  header div.header-button-login-sign,
+  header div.header-button-sell {
+    display: none;
+  }
+}
+@media (max-width: 425px) {
 }

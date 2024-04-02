@@ -1,5 +1,8 @@
-import * as React from "react";
-import { Range } from "react-range";
+import { Range, getTrackBackground } from "react-range";
+
+// getTrackBackground = ({ min, max }) => {
+//   (min = { min }), (max = { max }), (values = [min, max]), (colors = "#2db0ba");
+// };
 
 const SuperRange = ({ min, setMin, max, setMax }) => {
   return (
@@ -25,13 +28,6 @@ const SuperRange = ({ min, setMin, max, setMax }) => {
           {children}
         </div>
       )}
-      //   getTrackBackground ={({props}) => ({
-      //     min= {min}
-      //     max= {max}
-      //     values= number[]
-      //     colors: string[]
-      //   }) => (string)}
-
       renderThumb={({ props, index }) => (
         <div
           {...props}

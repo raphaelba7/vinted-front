@@ -20,3 +20,20 @@ a {
 .display-none {
   display: none;
 }
+
+/* ----------------- RESPONSIVE ---------------- */
+@media (max-width: 1024px) {
+  body {
+    width: 1024px;
+  }
+}
+@media (max-width: 768px) {
+  body {
+    width: 768px;
+  }
+}
+@media (max-width: 425px) {
+  body {
+    width: 425px;
+  }
+}

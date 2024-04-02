@@ -5,6 +5,8 @@ import Cookies from "js-cookie";
 import { Link } from "react-router-dom";
 import "./index.css";
 import SuperRange from "../range";
+import Hamburger from "../hamburger";
+import { useState } from "react";
 
 const Header = ({
   visible,
@@ -23,6 +25,10 @@ const Header = ({
   header,
   setHeader,
 }) => {
+  const [hamburgerOpen, setHamburgerOpen] = useState(false);
+  const toggleHamburger = () => {
+    setHamburgerOpen(!hamburgerOpen);
+  };
   const handleSignUp = () => {
     setVisible(true);
     setModal("signUp");
@@ -54,15 +60,15 @@ const Header = ({
     setSearch(value);
   };
 
-  const handleMinChange = (event) => {
-    const value = Number(event.target.value);
-    setMin(value);
-  };
+  // const handleMinChange = (event) => {
+  //   const value = Number(event.target.value);
+  //   setMin(value);
+  // };
 
-  const handleMaxChange = (event) => {
-    const value = Number(event.target.value);
-    setMax(value);
-  };
+  // const handleMaxChange = (event) => {
+  //   const value = Number(event.target.value);
+  //   setMax(value);
+  // };
 
   let classHeader = "";
 
@@ -100,7 +106,7 @@ const Header = ({
               </label>
               <span>Prix entre :</span>
               <SuperRange min={min} setMin={setMin} max={max} setMax={setMax} />
-              {/* <span> Prix mini :</span>
+              {/* <span> Prix min :</span>
               <input
                 type="text"
                 value={min}
@@ -134,10 +140,27 @@ const Header = ({
         </div>
         <div className="header-button-sell">
           {token ? (
-            <Button name="Vends tes articles" />
+            <Link to="/publish">
+              <Button name="Vends tes articles" className="button-sell" />
+            </Link>
           ) : (
-            <Button name="Vends tes articles" onClick={handleLogin} />
+            <Link to="/publish">
+              <Button
+                name="Vends tes articles"
+                className="button-sell"
+                onClick={handleLogin}
+              />
+            </Link>
           )}
+        </div>
+        <div className="div-hamburger" onClick={toggleHamburger}>
+          <Hamburger
+            isOpen={hamburgerOpen}
+            onClickLogin={handleLogin}
+            onClickSignUp={handleSignUp}
+            onClickLogOut={handleLogOut}
+            token={token}
+          />
         </div>
       </div>
     </header>

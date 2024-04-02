@@ -11,6 +11,7 @@ const Form = ({ modal, setModal, visible, setVisible, token, setToken }) => {
   const [password, setPassword] = useState("");
   const [newsLetter, setNewsLetter] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [avatar, setAvatar] = useState("");
 
   const navigate = useNavigate();
 
@@ -31,13 +32,23 @@ const Form = ({ modal, setModal, visible, setVisible, token, setToken }) => {
       event.preventDefault();
       try {
         setErrorMessage("");
+        // Je crée une nouvelle instance du constructeur FormData
+        const formData = new FormData();
+        // Rajouter 2 paires clef/valeur à mon formdata
+        formData.append("email", email);
+        formData.append("username", username);
+        formData.append("password", password);
+        formData.append("newsLetter", newsLetter);
+        formData.append("avatar", avatar);
+
         const { data } = await axios.post(
           ` https://lereacteur-vinted-api.herokuapp.com/user/signup`,
+          formData,
           {
-            email: email,
-            username: username,
-            password: password,
-            newsLetter: newsLetter,
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "multipart/form-data",
+            },
           }
         );
         // console.log(data)
@@ -88,6 +99,14 @@ const Form = ({ modal, setModal, visible, setVisible, token, setToken }) => {
             state={password}
             className="type-text"
           />
+          <Input
+            type="file"
+            name="avatar"
+            placeholder="avatar"
+            setState={setAvatar}
+            state={password}
+            className="type-text"
+          />
           <div className="newsletter">
             <input
               type="checkbox"
@@ -132,7 +151,6 @@ const Form = ({ modal, setModal, visible, setVisible, token, setToken }) => {
         setToken(data.token);
         setVisible(!visible);
         // setIsConnected(isConnected);
-        navigate("/");
       } catch (error) {
         console.log(error);
       }

@@ -2,6 +2,11 @@ footer {
   background-color: #f2f2f2;
   color: #757575;
   padding-bottom: 20px;
+  max-width: 100%;
+}
+
+footer > div.container {
+  width: 100%;
 }
 div.first-row-footer > div {
   margin: 20px;
@@ -41,4 +46,21 @@ div.footer-last-row {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
+}
+
+/* ----------------- RESPONSIVE ---------------- */
+@media (max-width: 1024px) {
+  footer > div.container {
+    width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  footer > div.container {
+    width: 768px;
+  }
+}
+@media (max-width: 425px) {
+  footer > div.container {
+    width: 425px;
+  }
 }

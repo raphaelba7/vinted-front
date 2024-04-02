@@ -10,6 +10,7 @@ import Cookies from "js-cookie";
 import Home from "./pages/home/Home";
 import Offer from "./pages/offer/Offer";
 import NotFound from "./pages/notFound/NotFound";
+import Publish from "./pages/publish";
 
 // Import components
 import Header from "./components/header";
@@ -21,6 +22,7 @@ library.add(faMagnifyingGlass);
 function App() {
   const [visible, setVisible] = useState(false);
   const [token, setToken] = useState(Cookies.get("userToken") || "");
+  const [username, setUsername] = useState("");
   const [modal, setModal] = useState("");
   const [sort, setSort] = useState(false);
   const [search, setSearch] = useState("");
@@ -78,6 +80,11 @@ function App() {
           path="/offer/:id"
           element={<Offer header={header} setHeader={setHeader} />}
         />
+        <Route
+          path="/publish"
+          element={token && <Publish token={token} setHeader={setHeader} />}
+        />
+
         <Route path="*" element={<NotFound />} />
       </Routes>
       {visible && (
@@ -88,6 +95,8 @@ function App() {
           setModal={setModal}
           token={token}
           setToken={setToken}
+          username={username}
+          setUsername={setUsername}
         />
       )}
       <Footer />

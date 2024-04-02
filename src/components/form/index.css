@@ -51,3 +51,11 @@ form > input.type-text {
   color: #2db0ba;
   font-size: 12px;
 }
+
+/* ----------------- RESPONSIVE ---------------- */
+@media (max-width: 1024px) {
+}
+@media (max-width: 768px) {
+}
+@media (max-width: 425px) {
+}
