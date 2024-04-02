@@ -11,7 +11,7 @@ import Home from "./pages/home/Home";
 import Offer from "./pages/offer/Offer";
 import NotFound from "./pages/notFound/NotFound";
 import Publish from "./pages/publish";
-
+import Payment from "./pages/payment";
 // Import components
 import Header from "./components/header";
 import Footer from "./components/footer";
@@ -84,6 +84,7 @@ function App() {
           path="/publish"
           element={token && <Publish token={token} setHeader={setHeader} />}
         />
+        <Route path="/payment" element={<Payment />} />
 
         <Route path="*" element={<NotFound />} />
       </Routes>

@@ -9,7 +9,7 @@ h1 {
   font-size: 24px;
   color: black;
 }
-.title-form {
+form.publish-form > .title-form {
   width: 100%;
 }
 

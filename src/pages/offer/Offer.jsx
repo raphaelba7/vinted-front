@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import Description from "../../components/description";
 import Carousel from "react-multi-carousel";
@@ -46,9 +47,16 @@ const Offer = ({ header, setHeader }) => {
 
   if (isLoading === true) {
     return (
-      <>
-        <h2> ERROR 404</h2>
-      </>
+      <main className="main__error">
+        <div className="error_container">
+          <div className="error__display">
+            <p>404 : PAGE NOT FOUND</p>
+            <Link to="/" className="error__link">
+              Retour à la page d'accueil
+            </Link>
+          </div>
+        </div>
+      </main>
     );
   } else {
     return (

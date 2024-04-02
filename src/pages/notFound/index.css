@@ -1,0 +1,30 @@
+.error_container {
+  width: 100%;
+}
+.main__error {
+  height: calc(100vh - 530px);
+  background-color: #ebedee;
+  padding-top: 13rem;
+}
+
+.error__display {
+  background-color: #ffffff;
+  text-align: center;
+  padding: 100px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.error__display > p {
+  font-size: 3rem;
+  color: var(--primary-color);
+  font-weight: bold;
+  margin-bottom: 50px;
+}
+
+.error__link {
+  color: var(--primary-color);
+  text-decoration: underline;
+  font-size: 1.6rem;
+}

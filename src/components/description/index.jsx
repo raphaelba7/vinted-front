@@ -1,4 +1,5 @@
 import Button from "../button";
+import { Link } from "react-router-dom";
 import "./index.css";
 
 const Description = ({ data }) => {
@@ -30,7 +31,15 @@ const Description = ({ data }) => {
           )}
           <span>{data.owner.account.username}</span>
         </div>
-        <Button name="Acheter" className="button-buy" />
+        <Link
+          to="/payment"
+          state={{
+            title: `${data.product_name}`,
+            price: `${data.product_price}`,
+          }}
+        >
+          <Button name="Acheter" className="button-buy" />
+        </Link>
       </div>
     </>
   );

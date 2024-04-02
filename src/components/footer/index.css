@@ -56,11 +56,6 @@ div.footer-last-row {
 }
 @media (max-width: 768px) {
   footer > div.container {
-    width: 768px;
-  }
-}
-@media (max-width: 425px) {
-  footer > div.container {
-    width: 425px;
+    width: 100%;
   }
 }

@@ -1,4 +1,4 @@
-import { Range, getTrackBackground } from "react-range";
+import { Range } from "react-range";
 
 // getTrackBackground = ({ min, max }) => {
 //   (min = { min }), (max = { max }), (values = [min, max]), (colors = "#2db0ba");
