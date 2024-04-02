@@ -26,7 +26,7 @@ const Payment = () => {
     // Type de transaction
     mode: "payment",
     // Montant de la transaction
-    amount: total,
+    amount: Number((Math.abs(total) * 100).toFixed(0)),
     // Devise de la transaction
     currency: "eur",
     // On peut customiser l'apparence ici
