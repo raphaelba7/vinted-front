@@ -7,7 +7,16 @@ import Button from "../../components/button";
 import Item from "../../components/item";
 import "./index.css";
 
-const Home = ({ sort, search, min, max, currentPage, setCurrentPage }) => {
+const Home = ({
+  sort,
+  search,
+  min,
+  max,
+  currentPage,
+  setCurrentPage,
+  token,
+  handleLogin,
+}) => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   let limit = 10;
@@ -67,7 +76,19 @@ const Home = ({ sort, search, min, max, currentPage, setCurrentPage }) => {
             <div className="container">
               <div className="hero-pop">
                 <h2>Prêts à faire du tri dans vos placards ?</h2>
-                <Button name="Commencer à vendre" />
+                {token ? (
+                  <Link to="/publish">
+                    <Button name="Commencer à vendre" className="button-sell" />
+                  </Link>
+                ) : (
+                  <Link to="/publish">
+                    <Button
+                      name="Commencer à vendre"
+                      className="button-sell"
+                      onClick={handleLogin}
+                    />
+                  </Link>
+                )}
               </div>
             </div>
             <img
