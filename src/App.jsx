@@ -82,9 +82,15 @@ function App() {
         />
         <Route
           path="/publish"
-          element={token && <Publish token={token} setHeader={setHeader} />}
+          element={
+            token ? (
+              <Publish token={token} setHeader={setHeader} />
+            ) : (
+              <NotFound />
+            )
+          }
         />
-        <Route path="/payment" element={<Payment />} />
+        <Route path="/payment" element={token ? <Payment /> : <NotFound />} />
 
         <Route path="*" element={<NotFound />} />
       </Routes>
