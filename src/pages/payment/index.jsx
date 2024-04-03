@@ -1,6 +1,7 @@
 import { useLocation } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
+import { Navigate } from "react-router-dom";
 import CheckoutForm from "../../components/checkOutForm";
 import "./index.css";
 
@@ -9,10 +10,15 @@ const stripePromise = loadStripe(
   "pk_test_51HCObyDVswqktOkX6VVcoA7V2sjOJCUB4FBt3EOiAdSz5vWudpWxwcSY8z2feWXBq6lwMgAb5IVZZ1p84ntLq03H00LDVc2RwP"
 );
 
-const Payment = () => {
+const Payment = ({ token }) => {
   const location = useLocation();
-  const { title } = location.state;
-  const { price } = location.state;
+  let price;
+  let title;
+
+  if (token && location.state) {
+    title = location.state;
+    price = location.state;
+  }
 
   let priceT = price / 5;
   let priceP = price / 10;
@@ -35,7 +41,7 @@ const Payment = () => {
     },
   };
 
-  return (
+  return token && location.state ? (
     <div className="payement-div">
       <div className="payement-container">
         <div className="payement-form">
@@ -76,6 +82,8 @@ const Payment = () => {
         </div>
       </div>
     </div>
+  ) : (
+    <Navigate to="/" />
   );
 };
 
