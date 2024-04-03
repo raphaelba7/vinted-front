@@ -85,6 +85,7 @@ function App() {
           element={token && <Publish token={token} setHeader={setHeader} />}
         />
         <Route path="/payment" element={token ? <Payment /> : <NotFound />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       {visible && (
         <Modal
@@ -99,7 +100,6 @@ function App() {
         />
       )}
       <Footer />
-      <Route path="*" element={<NotFound />} />
     </Router>
   );
 }
