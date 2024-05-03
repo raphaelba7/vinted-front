@@ -49,6 +49,11 @@ const Form = ({ modal, setModal, visible, setVisible, token, setToken }) => {
               Authorization: `Bearer ${token}`,
               "Content-Type": "multipart/form-data",
             },
+            // body: {
+            //   username: { username },
+            //   email: { email },
+            //   password: { password },
+            // },
           }
         );
         // console.log(data)
